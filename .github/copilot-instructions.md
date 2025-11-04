@@ -42,7 +42,7 @@ This is a simple blog page project currently featuring a "Hello World" page with
 
 ## Browser Compatibility
 
-Target modern browsers (Chrome, Firefox, Safari, Edge). No IE support needed.
+Target evergreen browsers (latest versions of Chrome, Firefox, Safari, Edge). No IE support needed.
 
 ## Future Development
 
