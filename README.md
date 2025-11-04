@@ -1,5 +1,7 @@
 # helloworld
 
+> **⚠️ Testing Environment:** This repository is used for testing GitHub features and workflows. It serves as a personal experimentation space for exploring GitHub's capabilities.
+
 A simple blog page project - currently just a Hello World page with potential to grow!
 
 ## About This Project
