@@ -14,8 +14,8 @@
         body {
             font-family: 'Georgia', serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            color: #3e2723;
+            background: linear-gradient(135deg, #fefefe 0%, #f5e6d3 100%);
             min-height: 100vh;
         }
         
@@ -26,7 +26,7 @@
         }
         
         header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #8d6e63 0%, #a1887f 100%);
             color: white;
             padding: 2rem 0;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -73,47 +73,47 @@
         }
         
         article {
-            background: white;
+            background: #fffaf0;
             padding: 2rem;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(141, 110, 99, 0.15);
             transition: transform 0.3s, box-shadow 0.3s;
         }
         
         article:hover {
             transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 6px 12px rgba(141, 110, 99, 0.25);
         }
         
         article h2 {
-            color: #667eea;
+            color: #6d4c41;
             margin-bottom: 0.5rem;
             font-size: 1.8rem;
         }
         
         .post-meta {
-            color: #888;
+            color: #8d6e63;
             font-size: 0.9rem;
             margin-bottom: 1rem;
             font-style: italic;
         }
         
         article p {
-            color: #555;
+            color: #4e342e;
             line-height: 1.8;
         }
         
         .read-more {
             display: inline-block;
             margin-top: 1rem;
-            color: #667eea;
+            color: #8d6e63;
             text-decoration: none;
             font-weight: bold;
             transition: color 0.3s;
         }
         
         .read-more:hover {
-            color: #764ba2;
+            color: #6d4c41;
         }
         
         aside {
@@ -123,20 +123,20 @@
         }
         
         .sidebar-widget {
-            background: white;
+            background: #fffaf0;
             padding: 1.5rem;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(141, 110, 99, 0.15);
         }
         
         .sidebar-widget h3 {
-            color: #667eea;
+            color: #6d4c41;
             margin-bottom: 1rem;
             font-size: 1.3rem;
         }
         
         .sidebar-widget p {
-            color: #555;
+            color: #4e342e;
             line-height: 1.6;
             font-size: 0.95rem;
         }
@@ -147,7 +147,7 @@
         
         .recent-posts-list li {
             padding: 0.5rem 0;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #d7ccc8;
         }
         
         .recent-posts-list li:last-child {
@@ -155,18 +155,18 @@
         }
         
         .recent-posts-list a {
-            color: #667eea;
+            color: #8d6e63;
             text-decoration: none;
             transition: color 0.3s;
         }
         
         .recent-posts-list a:hover {
-            color: #764ba2;
+            color: #6d4c41;
         }
         
         footer {
-            background: #333;
-            color: white;
+            background: #5d4037;
+            color: #efebe9;
             text-align: center;
             padding: 2rem 0;
             margin-top: 3rem;
@@ -205,6 +205,179 @@
                 margin: 0.5rem 0;
             }
         }
+        
+        /* Markdown Editor Styles */
+        .markdown-editor {
+            background: #fffaf0;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(141, 110, 99, 0.15);
+            margin-bottom: 2rem;
+        }
+        
+        .markdown-editor h2 {
+            color: #6d4c41;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .editor-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .editor-pane {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .editor-pane h3 {
+            color: #6d4c41;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        #markdown-input {
+            font-family: 'Courier New', monospace;
+            padding: 1rem;
+            border: 2px solid #d7ccc8;
+            border-radius: 5px;
+            resize: vertical;
+            min-height: 300px;
+            font-size: 0.95rem;
+            background: white;
+            color: #3e2723;
+        }
+        
+        #markdown-input:focus {
+            outline: none;
+            border-color: #8d6e63;
+        }
+        
+        #markdown-preview {
+            padding: 1rem;
+            border: 2px solid #d7ccc8;
+            border-radius: 5px;
+            min-height: 300px;
+            background: white;
+            color: #3e2723;
+            overflow-y: auto;
+        }
+        
+        /* Markdown content styles */
+        .markdown-content h1,
+        #markdown-preview h1 {
+            color: #6d4c41;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #d7ccc8;
+            padding-bottom: 0.5rem;
+        }
+        
+        .markdown-content h2,
+        #markdown-preview h2 {
+            color: #6d4c41;
+            font-size: 1.6rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .markdown-content h3,
+        #markdown-preview h3 {
+            color: #8d6e63;
+            font-size: 1.3rem;
+            margin-top: 1.2rem;
+            margin-bottom: 0.6rem;
+        }
+        
+        .markdown-content p,
+        #markdown-preview p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+        
+        .markdown-content ul,
+        .markdown-content ol,
+        #markdown-preview ul,
+        #markdown-preview ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .markdown-content li,
+        #markdown-preview li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .markdown-content code,
+        #markdown-preview code {
+            background: #f5e6d3;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #6d4c41;
+        }
+        
+        .markdown-content pre,
+        #markdown-preview pre {
+            background: #f5e6d3;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin-bottom: 1rem;
+        }
+        
+        .markdown-content pre code,
+        #markdown-preview pre code {
+            background: none;
+            padding: 0;
+        }
+        
+        .markdown-content blockquote,
+        #markdown-preview blockquote {
+            border-left: 4px solid #8d6e63;
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: #6d4c41;
+            font-style: italic;
+        }
+        
+        .markdown-content a,
+        #markdown-preview a {
+            color: #8d6e63;
+            text-decoration: none;
+            border-bottom: 1px solid #8d6e63;
+        }
+        
+        .markdown-content a:hover,
+        #markdown-preview a:hover {
+            color: #6d4c41;
+            border-bottom-color: #6d4c41;
+        }
+        
+        .markdown-content img,
+        #markdown-preview img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+        
+        .markdown-content hr,
+        #markdown-preview hr {
+            border: none;
+            border-top: 2px solid #d7ccc8;
+            margin: 2rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .editor-container {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -222,6 +395,41 @@
     </header>
     
     <div class="container">
+        <!-- Markdown Editor Section -->
+        <section class="markdown-editor">
+            <h2>✍️ Write Your Blog Post with Markdown</h2>
+            <p style="color: #8d6e63; margin-bottom: 1rem;">Use markdown syntax to easily format your blog posts. Type in the editor and see the live preview!</p>
+            <div class="editor-container">
+                <div class="editor-pane">
+                    <h3>Markdown Input</h3>
+                    <textarea id="markdown-input" placeholder="# My Blog Post Title
+
+Write your content here using markdown syntax...
+
+## Subheading
+
+- Bullet point 1
+- Bullet point 2
+
+**Bold text** and *italic text*
+
+> Quote something inspiring
+
+[Link text](https://example.com)
+
+```
+Code block
+```"></textarea>
+                </div>
+                <div class="editor-pane">
+                    <h3>Live Preview</h3>
+                    <div id="markdown-preview">
+                        <p style="color: #8d6e63;">Start typing to see your formatted content...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
         <main>
             <section class="blog-posts">
                 <article>
@@ -279,5 +487,115 @@
             </div>
         </div>
     </footer>
+    
+    <script>
+        // Simple markdown parser
+        function parseMarkdown(markdown) {
+            let html = markdown;
+            
+            // Code blocks (must be before inline code)
+            html = html.replace(/```(\w+)?\n([\s\S]*?)```/g, '<pre><code>$2</code></pre>');
+            
+            // Headers
+            html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
+            html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>');
+            html = html.replace(/^# (.*$)/gim, '<h1>$1</h1>');
+            
+            // Bold and Italic
+            html = html.replace(/\*\*\*(.*?)\*\*\*/g, '<strong><em>$1</em></strong>');
+            html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+            
+            // Links
+            html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+            
+            // Inline code
+            html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+            
+            // Blockquotes
+            html = html.replace(/^> (.*$)/gim, '<blockquote>$1</blockquote>');
+            
+            // Horizontal rules
+            html = html.replace(/^---$/gim, '<hr>');
+            
+            // Lists
+            html = html.replace(/^\- (.*$)/gim, '<li>$1</li>');
+            html = html.replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>');
+            
+            // Line breaks and paragraphs
+            html = html.split('\n\n').map(para => {
+                // Skip if already wrapped in a tag
+                if (para.match(/^<[^>]+>/)) {
+                    return para;
+                }
+                return '<p>' + para.replace(/\n/g, '<br>') + '</p>';
+            }).join('\n');
+            
+            return html;
+        }
+        
+        // Markdown live preview functionality
+        const markdownInput = document.getElementById('markdown-input');
+        const markdownPreview = document.getElementById('markdown-preview');
+        
+        // Update preview when user types
+        markdownInput.addEventListener('input', function() {
+            const markdownText = this.value;
+            if (markdownText.trim() === '') {
+                markdownPreview.innerHTML = '<p style="color: #8d6e63;">Start typing to see your formatted content...</p>';
+            } else {
+                // Convert markdown to HTML
+                markdownPreview.innerHTML = parseMarkdown(markdownText);
+            }
+        });
+        
+        // Add initial example on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            const exampleMarkdown = `# Welcome to Markdown Blogging!
+
+This is a simple example showing how you can write blog posts using **Markdown syntax**.
+
+## Why Markdown?
+
+Markdown is easy to learn and makes writing content simple and fast. Here are some benefits:
+
+- Clean and readable syntax
+- Easy to format text
+- Supports code blocks
+- Great for blogging
+
+## Basic Formatting
+
+You can use *italic text*, **bold text**, or even ***both***!
+
+### Links and Images
+
+Create links like this: [Visit Example](https://example.com)
+
+### Code Examples
+
+Inline code: \`const blog = "cozy";\`
+
+Or code blocks:
+
+\`\`\`javascript
+function greet() {
+    console.log("Hello from my cozy blog!");
+}
+\`\`\`
+
+### Quotes
+
+> "The best time to plant a tree was 20 years ago. The second best time is now." - Chinese Proverb
+
+---
+
+**Try editing the text on the left to see the live preview!**`;
+            
+            // Set example text and render it
+            markdownInput.value = exampleMarkdown;
+            markdownPreview.innerHTML = parseMarkdown(exampleMarkdown);
+        });
+    </script>
 </body>
 </html>
