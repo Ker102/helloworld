@@ -409,9 +409,9 @@
             <div class="editor-container">
                 <div class="editor-pane">
                     <h3>Markdown Input</h3>
-                    <textarea id="markdown-input" placeholder="Write your content here using markdown syntax...
+                    <textarea id="markdown-input" placeholder="## My First Post
 
-## Subheading
+Write your content here using markdown syntax...
 
 - Bullet point 1
 - Bullet point 2
@@ -444,9 +444,11 @@ Code block
                 </button>
             </div>
             
-            <!-- Success Message -->
+            <!-- Messages -->
             <div id="success-message" style="display: none; margin-top: 1rem; padding: 1rem; background: #c8e6c9; color: #2e7d32; border-radius: 5px; text-align: center; font-weight: bold;">
                 ✅ Post published successfully!
+            </div>
+            <div id="error-message" style="display: none; margin-top: 1rem; padding: 1rem; background: #ffcdd2; color: #c62828; border-radius: 5px; text-align: center; font-weight: bold;">
             </div>
         </section>
         
@@ -669,6 +671,16 @@ function greet() {
         const clearBtn = document.getElementById('clear-btn');
         const postTitleInput = document.getElementById('post-title');
         const successMessage = document.getElementById('success-message');
+        const errorMessage = document.getElementById('error-message');
+        
+        // Function to show error message
+        function showError(message) {
+            errorMessage.textContent = message;
+            errorMessage.style.display = 'block';
+            setTimeout(() => {
+                errorMessage.style.display = 'none';
+            }, 3000);
+        }
         
         publishBtn.addEventListener('click', function() {
             const title = postTitleInput.value.trim();
@@ -676,13 +688,13 @@ function greet() {
             
             // Validation
             if (!title) {
-                alert('Please enter a post title!');
+                showError('⚠️ Please enter a post title!');
                 postTitleInput.focus();
                 return;
             }
             
             if (!content) {
-                alert('Please enter some content for your post!');
+                showError('⚠️ Please enter some content for your post!');
                 markdownInput.focus();
                 return;
             }
