@@ -518,14 +518,17 @@ Code block
             // Horizontal rules
             html = html.replace(/^---$/gim, '<hr>');
             
-            // Lists
+            // Lists - improved handling
             html = html.replace(/^\- (.*$)/gim, '<li>$1</li>');
-            html = html.replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>');
+            // Wrap consecutive list items in ul tags
+            html = html.replace(/(<li>.*?<\/li>\n?)+/g, function(match) {
+                return '<ul>' + match + '</ul>';
+            });
             
             // Line breaks and paragraphs
             html = html.split('\n\n').map(para => {
-                // Skip if already wrapped in a tag
-                if (para.match(/^<[^>]+>/)) {
+                // Skip if already wrapped in a block-level tag
+                if (para.match(/^<(h[1-6]|ul|ol|pre|blockquote|hr)/)) {
                     return para;
                 }
                 return '<p>' + para.replace(/\n/g, '<br>') + '</p>';
