@@ -399,12 +399,17 @@
         <section class="markdown-editor">
             <h2>✍️ Write Your Blog Post with Markdown</h2>
             <p style="color: #8d6e63; margin-bottom: 1rem;">Use markdown syntax to easily format your blog posts. Type in the editor and see the live preview!</p>
+            
+            <!-- Post Title Input -->
+            <div style="margin-bottom: 1rem;">
+                <label for="post-title" style="display: block; color: #6d4c41; font-weight: bold; margin-bottom: 0.5rem;">Post Title:</label>
+                <input type="text" id="post-title" placeholder="Enter your post title..." style="width: 100%; padding: 0.75rem; border: 2px solid #d7ccc8; border-radius: 5px; font-size: 1rem; font-family: 'Georgia', serif; background: white; color: #3e2723;">
+            </div>
+            
             <div class="editor-container">
                 <div class="editor-pane">
                     <h3>Markdown Input</h3>
-                    <textarea id="markdown-input" placeholder="# My Blog Post Title
-
-Write your content here using markdown syntax...
+                    <textarea id="markdown-input" placeholder="Write your content here using markdown syntax...
 
 ## Subheading
 
@@ -427,6 +432,21 @@ Code block
                         <p style="color: #8d6e63;">Start typing to see your formatted content...</p>
                     </div>
                 </div>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div style="margin-top: 1.5rem; display: flex; gap: 1rem; justify-content: flex-end;">
+                <button id="clear-btn" style="padding: 0.75rem 1.5rem; background: #d7ccc8; color: #5d4037; border: none; border-radius: 5px; font-size: 1rem; font-family: 'Georgia', serif; cursor: pointer; transition: background 0.3s;">
+                    Clear Editor
+                </button>
+                <button id="publish-btn" style="padding: 0.75rem 2rem; background: linear-gradient(135deg, #8d6e63 0%, #a1887f 100%); color: white; border: none; border-radius: 5px; font-size: 1rem; font-family: 'Georgia', serif; font-weight: bold; cursor: pointer; transition: transform 0.2s, box-shadow 0.3s; box-shadow: 0 4px 6px rgba(141, 110, 99, 0.3);">
+                    📝 Publish Post
+                </button>
+            </div>
+            
+            <!-- Success Message -->
+            <div id="success-message" style="display: none; margin-top: 1rem; padding: 1rem; background: #c8e6c9; color: #2e7d32; border-radius: 5px; text-align: center; font-weight: bold;">
+                ✅ Post published successfully!
             </div>
         </section>
         
@@ -598,6 +618,124 @@ function greet() {
             // Set example text and render it
             markdownInput.value = exampleMarkdown;
             markdownPreview.innerHTML = parseMarkdown(exampleMarkdown);
+            
+            // Load saved posts from localStorage
+            loadSavedPosts();
+        });
+        
+        // Function to save a post to localStorage
+        function savePost(title, content) {
+            const posts = JSON.parse(localStorage.getItem('blogPosts') || '[]');
+            const newPost = {
+                id: Date.now(),
+                title: title,
+                content: content,
+                date: new Date().toLocaleDateString('en-US', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                }),
+                author: 'Admin'
+            };
+            posts.unshift(newPost); // Add to beginning of array
+            localStorage.setItem('blogPosts', JSON.stringify(posts));
+            return newPost;
+        }
+        
+        // Function to create a blog post article element
+        function createPostElement(post) {
+            const article = document.createElement('article');
+            article.innerHTML = `
+                <h2>${post.title}</h2>
+                <div class="post-meta">Posted on ${post.date} by ${post.author}</div>
+                <div class="markdown-content">${parseMarkdown(post.content)}</div>
+            `;
+            return article;
+        }
+        
+        // Function to load saved posts from localStorage
+        function loadSavedPosts() {
+            const posts = JSON.parse(localStorage.getItem('blogPosts') || '[]');
+            const blogPostsSection = document.querySelector('.blog-posts');
+            
+            posts.forEach(post => {
+                const postElement = createPostElement(post);
+                blogPostsSection.appendChild(postElement);
+            });
+        }
+        
+        // Publish button functionality
+        const publishBtn = document.getElementById('publish-btn');
+        const clearBtn = document.getElementById('clear-btn');
+        const postTitleInput = document.getElementById('post-title');
+        const successMessage = document.getElementById('success-message');
+        
+        publishBtn.addEventListener('click', function() {
+            const title = postTitleInput.value.trim();
+            const content = markdownInput.value.trim();
+            
+            // Validation
+            if (!title) {
+                alert('Please enter a post title!');
+                postTitleInput.focus();
+                return;
+            }
+            
+            if (!content) {
+                alert('Please enter some content for your post!');
+                markdownInput.focus();
+                return;
+            }
+            
+            // Save the post
+            const newPost = savePost(title, content);
+            
+            // Add the post to the page
+            const blogPostsSection = document.querySelector('.blog-posts');
+            const postElement = createPostElement(newPost);
+            blogPostsSection.insertBefore(postElement, blogPostsSection.firstChild);
+            
+            // Show success message
+            successMessage.style.display = 'block';
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 3000);
+            
+            // Clear the form
+            postTitleInput.value = '';
+            markdownInput.value = '';
+            markdownPreview.innerHTML = '<p style="color: #8d6e63;">Start typing to see your formatted content...</p>';
+            
+            // Scroll to the new post
+            postElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+        
+        // Clear button functionality
+        clearBtn.addEventListener('click', function() {
+            if (confirm('Are you sure you want to clear the editor?')) {
+                postTitleInput.value = '';
+                markdownInput.value = '';
+                markdownPreview.innerHTML = '<p style="color: #8d6e63;">Start typing to see your formatted content...</p>';
+            }
+        });
+        
+        // Add hover effects for buttons
+        publishBtn.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px)';
+            this.style.boxShadow = '0 6px 12px rgba(141, 110, 99, 0.4)';
+        });
+        
+        publishBtn.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = '0 4px 6px rgba(141, 110, 99, 0.3)';
+        });
+        
+        clearBtn.addEventListener('mouseenter', function() {
+            this.style.background = '#bcaaa4';
+        });
+        
+        clearBtn.addEventListener('mouseleave', function() {
+            this.style.background = '#d7ccc8';
         });
     </script>
 </body>
