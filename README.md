@@ -27,6 +27,22 @@ Check out [ISSUES_IDEAS.md](ISSUES_IDEAS.md) for 5 cool feature ideas to transfo
 
 This project is in its early stages and welcomes contributions. Whether you're interested in adding new features, improving the design, or fixing bugs, your input is valuable!
 
+## Contributing
+
+When contributing to this project, please:
+- Use our [issue templates](.github/ISSUE_TEMPLATE/) to report bugs or suggest features
+- Review our [Security Policy](SECURITY.md) if you discover a security vulnerability
+- Check out the [GitHub Configuration Guide](GITHUB_CONFIGURATION.md) to learn about our automated tools
+
+## Security & Maintenance
+
+This repository uses automated tools to maintain code quality and security:
+- 🔒 **CodeQL** - Automated security scanning
+- 🤖 **Dependabot** - Automatic dependency updates
+- 📋 **Issue Templates** - Structured bug reports and feature requests
+
+For more details, see [GITHUB_CONFIGURATION.md](GITHUB_CONFIGURATION.md).
+
 ## Testing Notes
 
 This README has been updated with additional sections to provide more comprehensive documentation and to support testing of documentation changes in the repository workflow.
