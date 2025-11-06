@@ -1,0 +1,19 @@
+labeler-config:
+  - 'README.md'
+
+documentation:
+  - '**/*.md'
+
+frontend:
+  - 'src/frontend/**'
+  - 'app/**'
+
+backend:
+  - 'src/backend/**'
+  - 'server/**'
+
+tests:
+  - 'tests/**'
+
+ci:
+  - '.github/workflows/**'
