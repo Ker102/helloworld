@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Ask a Question
+    url: https://github.com/Ker102/helloworld/discussions
+    about: If you have a question, please use GitHub Discussions instead of opening an issue
