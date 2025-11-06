@@ -151,12 +151,49 @@ Implement a lightweight analytics dashboard and comment system to track engageme
 
 ---
 
+## Issue #6: Add "Publish Post" Button to Save Blog Posts
+**Priority**: High  
+**Difficulty**: Easy  
+**Labels**: enhancement, feature, good-first-issue
+
+### Description
+Add a "Publish Post" button to the markdown editor that allows users to save their written blog posts and display them in the blog posts section. This bridges the gap between the existing markdown editor and the blog display functionality.
+
+### Proposed Features
+- Add a "Publish Post" button below the markdown editor
+- Implement functionality to capture post title, author, and content from the editor
+- Save posts to browser's localStorage for persistence
+- Dynamically add new posts to the blog posts section
+- Display posts in reverse chronological order (newest first)
+- Add basic form validation (ensure title and content are present)
+- Include a success message after publishing
+- Add a "Clear Editor" button to reset the form after publishing
+- Store post metadata (date, author)
+
+### Benefits
+- Makes the existing markdown editor functional
+- Allows users to actually create and save blog posts
+- No backend required - works entirely in the browser
+- Persistence using localStorage
+- Immediate visual feedback when posts are published
+- Foundation for future features like edit/delete functionality
+
+### Technical Implementation Notes
+- Use JavaScript to handle button click events
+- Parse markdown content using the existing parseMarkdown function
+- Store posts as JSON array in localStorage
+- Dynamically create article elements and prepend to blog-posts section
+- Include post title as a separate input field in the editor
+
+---
+
 ## Implementation Priority Recommendation
 
-1. **Start with Issue #1** (CSS Styling) - Gives immediate visual improvement
+1. **Start with Issue #1** (CSS Styling) - Gives immediate visual improvement ✅ (Completed)
 2. **Then Issue #2** (Dynamic Blog System) - Core functionality
-3. **Follow with Issue #3** (Editor) - Makes blog actually usable
-4. **Add Issue #4** (RSS/Social) - Extends reach
-5. **Finally Issue #5** (Analytics/Comments) - Advanced community features
+3. **Follow with Issue #3** (Editor) - Makes blog actually usable ✅ (Completed)
+4. **NEW: Issue #6** (Add Post Button) - Makes editor functional
+5. **Add Issue #4** (RSS/Social) - Extends reach
+6. **Finally Issue #5** (Analytics/Comments) - Advanced community features
 
 Each issue builds upon the previous ones, creating a comprehensive blog platform while maintaining clean, maintainable code.
