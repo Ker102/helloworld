@@ -48,6 +48,35 @@ Three files were created in `.github/ISSUE_TEMPLATE/`:
 
 ---
 
+## 🏷️ Repository Labels
+
+Repository labels help categorize and organize issues and pull requests.
+
+### What Was Configured
+
+A GitHub Actions workflow (`.github/workflows/create-labels.yml`) was created to set up the required labels for Dependabot:
+
+- **dependencies** - Blue (#0366d6) - Pull requests that update a dependency file
+- **github-actions** - Black (#000000) - Pull requests that update GitHub Actions code
+
+### How to Create the Labels
+
+The labels are created using a manual workflow:
+
+1. Go to the **Actions** tab in your repository
+2. Select **Create Missing Labels** from the workflows list
+3. Click **Run workflow**
+4. Click the green **Run workflow** button to confirm
+
+The workflow uses the GitHub CLI (`gh label create`) with the `--force` flag, so it's safe to run multiple times - it will update existing labels rather than fail.
+
+### Benefits:
+- Required for Dependabot to properly label its pull requests
+- Helps organize and filter dependency-related PRs
+- Standardized across GitHub repositories
+
+---
+
 ## 🤖 Dependabot
 
 Dependabot automatically checks for outdated or vulnerable dependencies and creates pull requests to update them.
@@ -60,7 +89,7 @@ A `.github/dependabot.yml` file was created with the following configuration:
 - **Update Schedule**: Weekly on Mondays at 6:00 AM UTC
 - **Pull Request Limit**: Maximum of 5 open PRs at a time
 - **Auto-assigned Reviewer**: Ker102
-- **Labels**: Automatically tags PRs with "dependencies" and "github-actions"
+- **Labels**: Automatically tags PRs with "dependencies" and "github-actions" (these labels must exist in the repository)
 - **Commit Message Prefix**: "chore" with scope included
 
 ### How Dependabot Works
@@ -178,6 +207,7 @@ Two components were set up:
 
 ### What You Now Have:
 
+✅ **Repository Labels** - Required labels for Dependabot (dependencies, github-actions)  
 ✅ **Issue Templates** - Structured bug reports and feature requests  
 ✅ **Dependabot** - Automatic dependency updates for GitHub Actions  
 ✅ **CodeQL Security Scanning** - Automated vulnerability detection  
@@ -185,6 +215,7 @@ Two components were set up:
 
 ### Getting Started Checklist:
 
+- [ ] Run the "Create Missing Labels" workflow to create required labels
 - [ ] Enable Dependabot alerts in Settings → Security & analysis
 - [ ] Enable Dependabot security updates
 - [ ] Enable CodeQL code scanning (should auto-enable when workflow runs)
@@ -223,6 +254,13 @@ Go to **Settings → Security & analysis** and ensure these are enabled:
 ---
 
 ## 🔧 Maintenance
+
+### Managing Labels
+
+To add more labels or modify existing ones:
+- **Manual Method**: Go to Issues → Labels → New label
+- **Automated Method**: Edit `.github/workflows/create-labels.yml` to add more label creation steps
+- **Label Colors**: Follow [GitHub's label color conventions](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels)
 
 ### Updating Issue Templates
 

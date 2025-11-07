@@ -1,0 +1,32 @@
+name: Create Missing Labels
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create-labels:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: read
+
+    steps:
+      - name: Create dependencies label
+        run: |
+          gh label create "dependencies" \
+            --description "Pull requests that update a dependency file" \
+            --color "0366d6" \
+            --force
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+
+      - name: Create github-actions label
+        run: |
+          gh label create "github-actions" \
+            --description "Pull requests that update GitHub Actions code" \
+            --color "000000" \
+            --force
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
