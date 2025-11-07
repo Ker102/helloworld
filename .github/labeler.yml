@@ -1,23 +1,16 @@
 documentation:
-  - changed-files:
-    - any-glob-to-any-file: '**/*.md'
+  - '**/*.md'
 
 frontend:
-  - changed-files:
-    - any-glob-to-any-file:
-      - 'src/frontend/**'
-      - 'app/**'
+  - 'src/frontend/**'
+  - 'app/**'
 
 backend:
-  - changed-files:
-    - any-glob-to-any-file:
-      - 'src/backend/**'
-      - 'server/**'
+  - 'src/backend/**'
+  - 'server/**'
 
 tests:
-  - changed-files:
-    - any-glob-to-any-file: 'tests/**'
+  - 'tests/**'
 
 ci:
-  - changed-files:
-    - any-glob-to-any-file: '.github/workflows/**'
+  - '.github/workflows/**'
