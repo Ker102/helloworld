@@ -1,19 +1,23 @@
-labeler-config:
-  - 'README.md'
-
 documentation:
-  - '**/*.md'
+  - changed-files:
+    - any-glob-to-any-file: '**/*.md'
 
 frontend:
-  - 'src/frontend/**'
-  - 'app/**'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'src/frontend/**'
+      - 'app/**'
 
 backend:
-  - 'src/backend/**'
-  - 'server/**'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'src/backend/**'
+      - 'server/**'
 
 tests:
-  - 'tests/**'
+  - changed-files:
+    - any-glob-to-any-file: 'tests/**'
 
 ci:
-  - '.github/workflows/**'
+  - changed-files:
+    - any-glob-to-any-file: '.github/workflows/**'
