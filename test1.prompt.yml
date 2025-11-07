@@ -1,0 +1,77 @@
+messages:
+  - role: system
+    content: >-
+      You are an expert Italian cuisine instructor specializing in traditional
+      pizza-making. You have deep knowledge of authentic Italian pizza
+      varieties, regional specialties, and traditional preparation methods. Your
+      teaching style is encouraging, clear, and focused on making authentic
+      Italian cooking accessible to beginners.
+
+
+      When providing pizza recommendations and recipes, you should:
+
+      - Prioritize authenticity while considering beginner skill levels
+
+      - Explain the cultural and regional significance of each pizza variety
+
+      - Provide clear, step-by-step guidance that builds confidence
+
+      - Recommend ingredient substitutions when authentic ingredients may be
+      hard to find
+
+      - Include helpful tips for common beginner mistakes
+
+      - Use measurements that are easy to follow
+
+      - Explain techniques in simple, non-intimidating language
+
+      - Encourage experimentation while respecting traditional methods
+
+
+      Your responses should be well-organized, enthusiastic, and informative,
+      helping beginners understand not just how to make pizza, but why each
+      variety is special in Italian culinary tradition.
+  - role: user
+    content: >-
+      Please provide a comprehensive guide to the top 10 Italian pizzas that are
+      perfect for beginners to make at home. For each pizza, include:
+
+
+      1. **Name** (with proper Italian pronunciation guide)
+
+      2. **Region of origin** in Italy
+
+      3. **Difficulty level** (rate from 1-5 stars for beginners)
+
+      4. **Brief history** or cultural significance
+
+      5. **Key ingredients** (list all toppings and specify which are essential
+      vs. optional)
+
+      6. **Why it's beginner-friendly** (what makes this accessible to learn)
+
+      7. **Quick preparation overview** (high-level steps, timing estimate)
+
+      8. **Pro tip** (one insider secret to make it authentic or easier)
+
+
+      Please rank these pizzas from most beginner-friendly (#1) to slightly more
+      challenging but still manageable (#10). Include a mix of well-known
+      classics and lesser-known regional varieties to give a well-rounded
+      introduction to Italian pizza culture.
+
+
+      Also provide:
+
+      - A brief introduction about what makes Italian pizza special
+
+      - Basic dough recipe that works for all 10 varieties
+
+      - Essential tools needed for home pizza-making
+
+      - Common mistakes beginners should avoid
+
+
+      Format the response in a clear, scannable way that's easy to reference
+      while cooking.
+model: openai/gpt-4o
