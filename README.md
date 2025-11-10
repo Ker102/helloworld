@@ -64,10 +64,68 @@ This project started as a basic "Hello World" demonstration and serves as a foun
 
 ## Getting Started
 
-To view this project locally:
+### Option 1: Direct File Access
+To view this project locally without Docker:
 1. Clone the repository to your local machine
 2. Open `index.html` in your web browser
 3. That's it! No build process or dependencies required.
+
+### Option 2: Using Docker 🐳
+
+This project includes Docker support for easy development and deployment.
+
+#### Prerequisites
+- [Docker](https://docs.docker.com/get-docker/) installed on your machine
+- [Docker Compose](https://docs.docker.com/compose/install/) (included with Docker Desktop)
+
+#### Quick Start with Docker Compose
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Ker102/helloworld.git
+   cd helloworld
+   ```
+
+2. Start the blog using Docker Compose:
+   ```bash
+   docker compose up -d
+   ```
+
+3. Open your browser and visit:
+   ```
+   http://localhost:8080
+   ```
+
+4. To stop the blog:
+   ```bash
+   docker compose down
+   ```
+
+#### Using Docker Directly
+
+You can also build and run the Docker container manually:
+
+```bash
+# Build the image
+docker build -t helloworld-blog .
+
+# Run the container
+docker run -d -p 8080:80 --name my-blog helloworld-blog
+
+# Stop the container
+docker stop my-blog
+docker rm my-blog
+```
+
+#### Development Containers
+
+This project supports [VS Code Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers). If you have VS Code with the Dev Containers extension:
+
+1. Open the project in VS Code
+2. When prompted, click "Reopen in Container"
+3. VS Code will build and start the development container automatically
+
+This provides a consistent development environment with all necessary tools pre-configured.
 
 ## Future Development Ideas
 

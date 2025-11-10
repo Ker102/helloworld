@@ -1,0 +1,39 @@
+{
+  "name": "Hello World Blog Dev Container",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "blog",
+  "workspaceFolder": "/workspace",
+  
+  // Configure tool-specific properties
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "formulahendry.auto-rename-tag",
+        "pranaygp.vscode-css-peek",
+        "ritwickdey.LiveServer"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "liveServer.settings.port": 8080
+      }
+    }
+  },
+  
+  // Forward port 80 from container to host
+  "forwardPorts": [80],
+  "portsAttributes": {
+    "80": {
+      "label": "Blog Server",
+      "onAutoForward": "notify"
+    }
+  },
+  
+  // Use 'postCreateCommand' to run commands after the container is created
+  "postCreateCommand": "echo 'Dev container ready! Open index.html in a browser to view the blog.'",
+  
+  // Comment out to connect as root instead
+  "remoteUser": "root"
+}
