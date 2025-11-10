@@ -1,0 +1,31 @@
+# CODEOWNERS file for automatic review requests
+# 
+# This file defines individuals or teams that are responsible for code in this repository.
+# When a pull request modifies files matching these patterns, the specified owners will be
+# automatically requested for review.
+#
+# For more information, see:
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default owner for everything in the repository
+* @Ker102
+
+# Documentation files
+*.md @Ker102
+/docs/ @Ker102
+
+# Frontend code
+*.html @Ker102
+*.css @Ker102
+*.js @Ker102
+
+# GitHub configuration and workflows
+/.github/ @Ker102
+
+# Docker configuration
+Dockerfile @Ker102
+docker-compose.yml @Ker102
+.dockerignore @Ker102
+
+# Security policy
+SECURITY.md @Ker102
