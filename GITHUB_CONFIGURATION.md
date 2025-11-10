@@ -299,6 +299,124 @@ The autolabeler helps categorize PRs automatically:
 - Use appropriate labels or follow branch naming conventions
 - Review draft releases before publishing
 - Add any additional context manually before publishing
+## 📝 Pull Request Templates
+
+Pull request templates help contributors provide consistent information when submitting code changes.
+
+### What Was Configured
+
+A `.github/pull_request_template.md` file was created with:
+- Description section for explaining changes
+- Type of change checklist (bug fix, feature, breaking change, etc.)
+- Testing steps and results checklist
+- Screenshots section for UI changes
+- Code quality and review checklist
+- Related issues linking
+- Additional notes section
+
+### How to Use Pull Request Templates
+
+**Creating a Pull Request:**
+
+1. When you create a new pull request on GitHub, the template automatically populates the PR description
+2. Fill in the description of your changes
+3. Check the boxes that apply to your PR type
+4. Document testing steps you performed
+5. Add screenshots if you made UI changes
+6. Complete the checklist before requesting review
+7. Link any related issues
+
+**Benefits:**
+- Ensures all PRs contain necessary information for reviewers
+- Standardizes the review process
+- Helps contributors think about testing and documentation
+- Makes it easier for maintainers to understand changes
+- Reduces back-and-forth during code review
+
+---
+
+## 👥 Code Owners
+
+CODEOWNERS automatically requests reviews from designated people when PRs modify certain files.
+
+### What Was Configured
+
+A `.github/CODEOWNERS` file was created with:
+- Default owner (@Ker102) for all repository files
+- Specific patterns for documentation, frontend code, GitHub config, and Docker files
+- Automatic review requests based on file patterns
+
+### How CODEOWNERS Works
+
+1. **Automatic Review Requests**: When a PR is created that modifies files matching CODEOWNERS patterns, GitHub automatically requests a review from the specified owners
+2. **Required Reviews**: Repository settings can require approval from code owners before merging
+3. **Pattern Matching**: Uses gitignore-style patterns to match files
+
+**Example Patterns:**
+- `*` - Matches all files in the repository
+- `*.md` - Matches all Markdown files
+- `/.github/` - Matches files in the .github directory
+- `Dockerfile` - Matches the specific Dockerfile
+
+### How to Use CODEOWNERS
+
+**For Contributors:**
+- When you create a PR, code owners are automatically notified
+- You'll see their review status on the PR
+- Wait for their approval before merging
+
+**For Maintainers:**
+- Edit `.github/CODEOWNERS` to add more owners or patterns
+- You can assign teams using `@org/team-name` format
+- Multiple owners can be specified for the same pattern
+
+**Benefits:**
+- Ensures the right people review changes
+- Distributes review workload based on expertise
+- Provides accountability for different parts of the codebase
+- Works seamlessly with GitHub's review system
+
+---
+
+## 🏷️ Automated Pull Request Labeling
+
+Automatic labeling helps organize and categorize pull requests based on the files they change.
+
+### What Was Configured
+
+The `.github/labeler.yml` file was enhanced with patterns for:
+- **documentation** - Markdown files and docs directory
+- **frontend** - HTML, CSS, JavaScript files
+- **docker** - Docker configuration files
+- **github-config** - GitHub configuration files
+- **security** - Security-related files
+- **ci** - GitHub Actions workflows
+- **tests** - Test files (when added to the repository)
+
+### How Automated Labeling Works
+
+1. **Workflow Trigger**: The `.github/workflows/label.yml` workflow runs on every pull request
+2. **Pattern Matching**: Checks which files were modified in the PR
+3. **Label Application**: Automatically adds labels based on matching patterns
+4. **Multiple Labels**: A PR can receive multiple labels if it modifies files in different categories
+
+### How to Use Automated Labeling
+
+**For Contributors:**
+- Labels are added automatically when you create a PR
+- No action needed from you
+- Labels help maintainers quickly understand what areas your PR affects
+
+**For Maintainers:**
+- Edit `.github/labeler.yml` to add or modify label patterns
+- Create corresponding labels in the repository (Issues → Labels)
+- Use labels to filter and search PRs
+
+**Benefits:**
+- Consistent labeling across all PRs
+- Easier to filter and find relevant PRs
+- Helps identify areas of the codebase being actively developed
+- Provides quick visual context about PR scope
 
 ---
 
@@ -308,6 +426,9 @@ The autolabeler helps categorize PRs automatically:
 
 ✅ **Repository Labels** - Required labels for Dependabot (dependencies, github-actions)  
 ✅ **Issue Templates** - Structured bug reports and feature requests  
+✅ **Pull Request Templates** - Standardized PR descriptions with testing checklists  
+✅ **CODEOWNERS** - Automatic review requests from code owners  
+✅ **Automated PR Labeling** - Automatic labels based on modified files  
 ✅ **Dependabot** - Automatic dependency updates for GitHub Actions  
 ✅ **CodeQL Security Scanning** - Automated vulnerability detection  
 ✅ **Security Policy** - Clear process for reporting vulnerabilities  
@@ -316,11 +437,15 @@ The autolabeler helps categorize PRs automatically:
 ### Getting Started Checklist:
 
 - [ ] Run the "Create Missing Labels" workflow to create required labels
+- [ ] Create labels for automated PR labeling (documentation, frontend, docker, github-config, security, ci)
+- [ ] Enable branch protection rules to require code owner reviews (Settings → Branches)
 - [ ] Enable Dependabot alerts in Settings → Security & analysis
 - [ ] Enable Dependabot security updates
 - [ ] Enable CodeQL code scanning (should auto-enable when workflow runs)
 - [ ] Review and customize the security policy in SECURITY.md
+- [ ] Review and customize CODEOWNERS file if you have multiple maintainers
 - [ ] Test creating an issue using the new templates
+- [ ] Test creating a pull request to see the PR template
 - [ ] Wait for the first Dependabot scan (or trigger manually)
 - [ ] Check the Security tab after the first CodeQL scan runs
 - [ ] Merge a PR to see Release Drafter create your first draft release
