@@ -127,6 +127,53 @@ This project supports [VS Code Dev Containers](https://code.visualstudio.com/doc
 
 This provides a consistent development environment with all necessary tools pre-configured.
 
+## GitHub Packages
+
+![Package](https://img.shields.io/badge/package-GitHub%20Container%20Registry-blue.svg?logo=github)
+
+This project is automatically published to GitHub Container Registry (ghcr.io) whenever a new version tag is created.
+
+### Using the Published Container Image
+
+Pull and run the latest version:
+```bash
+docker pull ghcr.io/ker102/helloworld:latest
+docker run -d -p 8080:80 ghcr.io/ker102/helloworld:latest
+```
+
+Then visit `http://localhost:8080` in your browser.
+
+### Available Tags
+
+The workflow automatically creates multiple tags for each release:
+- `latest` - Always points to the most recent version
+- `1.0.0` - Full semantic version
+- `1.0` - Major.minor version
+- `1` - Major version only
+
+Example:
+```bash
+# Pull a specific version
+docker pull ghcr.io/ker102/helloworld:1.0.0
+
+# Or pull the latest major version
+docker pull ghcr.io/ker102/helloworld:1
+```
+
+### Publishing a New Version
+
+To publish a new version, create and push a version tag:
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+The GitHub Actions workflow will automatically:
+1. Build the Docker image
+2. Tag it with multiple version tags
+3. Push it to GitHub Container Registry
+4. Generate a summary with pull instructions
+
 ## Future Development Ideas
 
 Check out [ISSUES_IDEAS.md](ISSUES_IDEAS.md) for 5 cool feature ideas to transform this into a full-featured blog platform!

@@ -203,6 +203,85 @@ Two components were set up:
 
 ---
 
+## 📦 GitHub Packages Publishing
+
+This repository automatically publishes Docker container images to GitHub Container Registry (ghcr.io) with proper versioning.
+
+### What Was Configured
+
+1. **Publish Package Workflow** (`.github/workflows/publish-package.yml`)
+   - Publishes Docker container images to GitHub Container Registry
+   - Triggers automatically when version tags are pushed (e.g., `v1.0.0`)
+   - Can also be triggered manually from the Actions tab
+   - Creates multiple semantic version tags for flexibility
+
+### How It Works
+
+1. **Tag-Based Publishing**: When you create and push a version tag, the workflow automatically:
+   - Builds a Docker image from the Dockerfile
+   - Tags it with multiple version formats
+   - Pushes it to GitHub Container Registry
+   - Generates a summary with pull instructions
+
+2. **Automatic Tagging**: For a tag like `v1.2.3`, it creates:
+   - `1.2.3` - Full semantic version
+   - `1.2` - Major.minor version
+   - `1` - Major version only
+   - `latest` - Always points to the newest version
+
+### How to Publish a New Version
+
+**Step 1: Create a version tag**
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+**Step 2: Monitor the workflow**
+1. Go to the **Actions** tab in your repository
+2. Watch the **Publish Package to GitHub Packages** workflow run
+3. Check the summary for pull instructions
+
+**Step 3: Use the published image**
+```bash
+docker pull ghcr.io/ker102/helloworld:latest
+docker run -d -p 8080:80 ghcr.io/ker102/helloworld:latest
+```
+
+### Using Published Images
+
+**Pull the latest version:**
+```bash
+docker pull ghcr.io/ker102/helloworld:latest
+```
+
+**Pull a specific version:**
+```bash
+docker pull ghcr.io/ker102/helloworld:1.0.0
+```
+
+**Pull by major version (always gets latest minor/patch):**
+```bash
+docker pull ghcr.io/ker102/helloworld:1
+```
+
+### Managing Package Visibility
+
+By default, packages are public. To manage visibility:
+
+1. Go to your GitHub profile
+2. Click **Packages** tab
+3. Select the `helloworld` package
+4. Click **Package settings**
+5. Configure visibility (public or private)
+
+### Benefits
+
+- **Automated publishing**: No manual Docker builds needed
+- **Version management**: Multiple tags for different use cases
+- **Consistent releases**: Every tag creates a release automatically
+- **Easy distribution**: Users can pull images without cloning the repo
+- **Layer caching**: Faster builds using GitHub Actions cache
 ## 📝 Automated Release Notes
 
 Automated release notes generation helps maintain a clear changelog and create professional releases automatically.
@@ -432,6 +511,7 @@ The `.github/labeler.yml` file was enhanced with patterns for:
 ✅ **Dependabot** - Automatic dependency updates for GitHub Actions  
 ✅ **CodeQL Security Scanning** - Automated vulnerability detection  
 ✅ **Security Policy** - Clear process for reporting vulnerabilities  
+✅ **GitHub Packages Publishing** - Automated Docker image publishing with versioning  
 ✅ **Automated Release Notes** - Draft releases with categorized changelogs  
 
 ### Getting Started Checklist:
