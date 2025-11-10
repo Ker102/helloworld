@@ -203,6 +203,105 @@ Two components were set up:
 
 ---
 
+## 📝 Automated Release Notes
+
+Automated release notes generation helps maintain a clear changelog and create professional releases automatically.
+
+### What Was Configured
+
+Two components were set up:
+
+1. **Release Drafter Workflow** (`.github/workflows/release-drafter.yml`)
+   - Automatically generates release notes from merged PRs
+   - Creates and updates draft releases
+   - Runs on pushes to main and on pull request events
+   - Includes autolabeler for automatic PR categorization
+
+2. **Release Drafter Configuration** (`.github/release-drafter.yml`)
+   - Defines categories for organizing changes
+   - Configures automatic version resolution
+   - Sets up autolabeling rules based on files, branches, and titles
+   - Customizes release note templates
+
+### How Release Drafter Works
+
+1. **On Pull Request**: Automatically applies labels based on:
+   - Changed files (e.g., `*.md` → documentation label)
+   - Branch names (e.g., `feature/*` → feature label)
+   - PR titles (e.g., "fix bug" → bug label)
+
+2. **When PR is Merged**: Updates or creates a draft release with:
+   - Categorized list of changes
+   - Contributor acknowledgments
+   - Automatically determined version number
+
+3. **Release Categories**:
+   - 🚀 **Features** - New features and enhancements
+   - 🐛 **Bug Fixes** - Bug fixes and corrections
+   - 📚 **Documentation** - Documentation updates
+   - 🧰 **Maintenance** - Chores, dependencies, CI updates
+   - 🎨 **Design** - Design and frontend changes
+
+### How to Use Release Drafter
+
+**Viewing Draft Releases:**
+
+1. Go to the **Releases** section in your repository (on the right sidebar or under Code tab)
+2. You'll see a draft release automatically created/updated
+3. Review the generated release notes
+4. Edit the release notes if needed
+5. When ready, click **Publish release** to make it public
+
+**Creating Releases:**
+
+1. Merge pull requests to the main branch as normal
+2. Release Drafter automatically updates the draft release
+3. When you're ready to release:
+   - Go to the draft release
+   - Review and edit if needed
+   - Add any additional notes
+   - Optionally attach binary files
+   - Click **Publish release**
+
+**Version Management:**
+
+Release Drafter automatically determines version numbers based on PR labels:
+- **Major version** (1.0.0 → 2.0.0): PRs labeled with `major` or `breaking`
+- **Minor version** (1.0.0 → 1.1.0): PRs labeled with `feature` or `enhancement`
+- **Patch version** (1.0.0 → 1.0.1): PRs labeled with `bug`, `fix`, `documentation`, or `chore`
+
+**Autolabeler Rules:**
+
+The autolabeler helps categorize PRs automatically:
+
+| Label | Applied When |
+|-------|--------------|
+| `documentation` | Markdown files changed, or files in docs/ |
+| `bug` | Branch name contains "fix/" or "bugfix/", or title contains "fix" or "bug" |
+| `feature` | Branch name contains "feature/" or "feat/", or title contains "feature" or "feat" |
+| `enhancement` | Title contains "enhance" or "improve" |
+| `chore` | Title contains "chore" |
+| `ci` | Workflow files in `.github/workflows/` changed |
+| `frontend` | HTML, CSS, or JS files changed |
+| `dependencies` | Package files or Docker files changed |
+
+**Benefits:**
+- Automated changelog generation from PR titles
+- Consistent release note formatting
+- Automatic version number suggestions
+- Time saved on manual release note writing
+- Professional-looking release pages
+- Clear categorization of changes
+- Contributor recognition
+
+**Tips:**
+- Write clear, descriptive PR titles as they appear in release notes
+- Use appropriate labels or follow branch naming conventions
+- Review draft releases before publishing
+- Add any additional context manually before publishing
+
+---
+
 ## 🎯 Summary
 
 ### What You Now Have:
@@ -212,6 +311,7 @@ Two components were set up:
 ✅ **Dependabot** - Automatic dependency updates for GitHub Actions  
 ✅ **CodeQL Security Scanning** - Automated vulnerability detection  
 ✅ **Security Policy** - Clear process for reporting vulnerabilities  
+✅ **Automated Release Notes** - Draft releases with categorized changelogs  
 
 ### Getting Started Checklist:
 
@@ -223,6 +323,7 @@ Two components were set up:
 - [ ] Test creating an issue using the new templates
 - [ ] Wait for the first Dependabot scan (or trigger manually)
 - [ ] Check the Security tab after the first CodeQL scan runs
+- [ ] Merge a PR to see Release Drafter create your first draft release
 
 ### Repository Settings to Verify:
 
@@ -241,6 +342,7 @@ Go to **Settings → Security & analysis** and ensure these are enabled:
 3. **Use Issue Templates**: When creating issues, use the templates
 4. **Keep Security Policy Updated**: Update SECURITY.md as your project evolves
 5. **Respond to Alerts Promptly**: Address security issues quickly
+6. **Publish Releases**: Review and publish draft releases when ready
 
 ---
 
@@ -250,6 +352,7 @@ Go to **Settings → Security & analysis** and ensure these are enabled:
 - [Dependabot Documentation](https://docs.github.com/en/code-security/dependabot)
 - [CodeQL Documentation](https://docs.github.com/en/code-security/code-scanning/introduction-to-code-scanning/about-code-scanning-with-codeql)
 - [Security Advisories Documentation](https://docs.github.com/en/code-security/security-advisories)
+- [Release Drafter Documentation](https://github.com/release-drafter/release-drafter)
 
 ---
 
@@ -285,5 +388,19 @@ Edit `.github/workflows/codeql.yml` to:
 - Change scan schedule
 - Add custom queries
 - Modify scan scope
+
+### Updating Release Drafter
+
+Edit `.github/release-drafter.yml` to:
+- Add or modify categories
+- Change version resolution rules
+- Update autolabeler patterns
+- Customize release note templates
+- Change emoji icons for categories
+
+Edit `.github/workflows/release-drafter.yml` to:
+- Change trigger branches (currently main)
+- Disable autolabeler if needed
+- Use a different configuration file
 
 Remember: All these configurations are version controlled, so changes will be reviewed through pull requests!
