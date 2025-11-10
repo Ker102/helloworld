@@ -1,7 +1,12 @@
 documentation:
   - '**/*.md'
+  - 'docs/**'
 
 frontend:
+  - '*.html'
+  - '*.css'
+  - '*.js'
+  - 'assets/**'
   - 'src/frontend/**'
   - 'app/**'
 
@@ -11,6 +16,24 @@ backend:
 
 tests:
   - 'tests/**'
+  - 'test/**'
+  - '**/*.test.js'
+  - '**/*.spec.js'
 
 ci:
   - '.github/workflows/**'
+
+docker:
+  - 'Dockerfile'
+  - 'docker-compose.yml'
+  - '.dockerignore'
+  - '.devcontainer/**'
+
+github-config:
+  - '.github/**'
+  - 'CODEOWNERS'
+  - '.github/pull_request_template.md'
+
+security:
+  - 'SECURITY.md'
+  - '.github/workflows/codeql.yml'
