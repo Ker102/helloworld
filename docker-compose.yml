@@ -1,0 +1,12 @@
+services:
+  blog:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: helloworld-blog
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    labels:
+      - "com.example.description=Hello World Cozy Blog"
+      - "com.example.version=1.0.0"

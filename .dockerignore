@@ -1,0 +1,31 @@
+# Git files
+.git
+.github
+.gitignore
+
+# Documentation
+README.md
+ISSUES_IDEAS.md
+SECURITY.md
+GITHUB_CONFIGURATION.md
+*.md
+
+# Test files
+test*.yml
+testlabeler.md
+
+# IDE and editor files
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docker files (not needed in image)
+Dockerfile
+docker-compose.yml
+.dockerignore
