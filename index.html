@@ -777,11 +777,25 @@ function greet() {
             return newPost;
         }
         
+        // Helper function to escape HTML special characters
+        function escapeHTML(str) {
+            return str.replace(/[&<>"']/g, function (m) {
+                switch (m) {
+                    case '&': return '&amp;';
+                    case '<': return '&lt;';
+                    case '>': return '&gt;';
+                    case '"': return '&quot;';
+                    case "'": return '&#39;';
+                    default: return m;
+                }
+            });
+        }
+        
         // Function to create a blog post article element
         function createPostElement(post) {
             const article = document.createElement('article');
             article.innerHTML = `
-                <h2>${post.title}</h2>
+                <h2>${escapeHTML(post.title)}</h2>
                 <div class="post-meta">Posted on ${post.date} by ${post.author}</div>
                 <div class="markdown-content">${parseMarkdown(post.content)}</div>
             `;
